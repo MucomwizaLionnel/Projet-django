@@ -1,0 +1,78 @@
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}"> <!-- Le fichier CSS que vous avez défini -->
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <h2>B@IT Health</h2>
+        <nav style="text-decoration: none;">
+                <a href="{% url 'tableaubord' %}"> Mon tableau de bord</a>
+                <a href="{% url 'ajout_societe' %}">Ajouter les balleur</a>
+                <a href="{% url 'listedesprojet' %}">Lites des sites d'implementation avec les techniciens </a>
+            
+                <a href="#" class="active"><i class="icon"></i>Ajouter un site d'implementation</a>
+                {% if is_chef_or_responsable %}
+                <a href="{% url 'register' %}"> <i>Creation des comptes des utilisateur </i></a>
+                {% endif %}
+
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="upgrade-btn">Parametre</a>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="table-container">
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb">
+            <a href="#">Pages</a> / <a href="#">Tables</a> / Tables
+        </div>
+
+        <h2>Authors table</h2> 
+    <h1>{{ form.instance.pk|yesno:"Modifier un site,Ajouter un site" }}</h1>
+
+    <form method="post" style="width: 500px; margin-left: 20%;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ajouter</button>
+    </form>
+    <hr>
+
+</div>
+               
+</div>
+
+<div class="conversation-illustration">
+    <div class="person left">
+        <!-- Left person illustration -->
+
+    </div>
+    <div class="person right">
+        <!-- Right person illustration -->
+    </div>
+</div>
+</div>
+
+
+
+</body>
+</html>
+
+{% endblock %}
+
+
+
+
+
+
+

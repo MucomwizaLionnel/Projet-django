@@ -1,0 +1,50 @@
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>B@IT</h1>
+            <p>Solution pour digitalisation des hopitaux</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+            
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        
+        <div class="content">
+            
+            
+        <div class="table-responsive">
+             <li><a href="{% url 'listeperdieme' %}"><button style="background-color: white;color:green">Voir les perdieme pour valider</button> </a></li>
+            <li><a href="{% url 'listeperdi' %}"><button style="background-color: white;color:green">Listes des perdiemes valide ou non valide </button></a></li>
+            <li><a href="{% url 'touslesprojet' %}"><button style="background-color: white;color:green">Lites de tous les projet avec des personnels </button></a></li>
+       </div>
+            {% comment %} <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div> {% endcomment %}
+        </div>
+
+        <!-- <footer><h4>Adresse</h4> </footer> -->
+    </div>
+
+</body>
+</html>
+
+{% endblock %}

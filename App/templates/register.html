@@ -1,0 +1,110 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Liste des rapports</title>
+</head>
+<body><div class="sidebar">
+    <div class="logo">
+        <h1>B@IT Health</h1>
+        <p></p>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+        
+            <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+            
+
+            <li><a href="{% url 'tableauborddeschef' %}">Tableau de bord</a></li>
+            
+       
+    </ul>
+    </nav>
+</div>
+    <!-- Your HTML structure goes here -->
+    <div class="rapport-container">
+        <div class="rapport-title">
+            <h1>Formulaire d'inscription</h1>
+        </div>
+        <div class="rapport-list" style=" width: 850px;">
+        
+            <form method="POST" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="">Nom utilisateur</label>
+                     {{profil_form.nom_utilisateur}}
+
+                </div>
+                <div class="form-group">
+                    <label for="">Nom et prenom</label>
+                    {{profil_form.nom_prenom}}
+
+                </div>
+               
+                <div class="form-group">
+                    <label for="">Mots de pass</label>
+                    {{profil_form.mots_de_pass}}
+                </div>
+                
+                <div class="form-group">
+                    <label for="">Confirme le mots de pass</label>
+                    {{profil_form.mots_de_pass1}}
+                </div>
+                <div class="form-group">
+                    <label for="">Date de naissance</label>
+                    {{profil_form.date_naissance}}
+
+                </div>
+                <div class="form-group">
+                    <label for="">Genre</label> 
+                    {{profil_form.genre}}
+                </div>
+                <div class="form-group">
+                    <label for="">Role</label> 
+                    {{profil_form.role}}
+                </div>
+                <div class="form-group">
+                    <label for="">Numero de telephone</label>
+                    {{profil_form.telephone}}
+
+                </div>
+                <div class="form-group">
+                    <label for="">Adresse</label> 
+                      {{profil_form.address}}
+
+                </div>
+                <div class="form-group">
+                    <label for="">Date d'enregistrement</label> 
+                      {{profil_form.date_enre}}
+
+                </div>
+
+            
+                <button type="submit">Creer</button>
+           
+        </form>
+
+   
+    </div>
+    <div class="conversation-illustration">
+        <div class="person left">
+            <!-- Left person illustration -->
+    
+        </div>
+        <div class="person right">
+            <!-- Right person illustration -->
+        </div>
+    </div>
+    </div>
+    
+    
+    
+    </body>
+    </html>
+    
+    {% endblock %}

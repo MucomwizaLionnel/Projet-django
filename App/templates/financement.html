@@ -1,0 +1,77 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>B@IT </h1>
+            <p>Health</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+
+               <li><a href="{% url 'tableauborddeschef' %}"> Tableau de Bord</a></li>
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+               
+            </div>
+            
+        </header>
+
+
+        <div class="content">
+  
+        <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom de societe ou organisation qui finance le projet</th>
+                                <th>Date de debit</th>
+                                <th>Date de fin</th>
+                                <th>Actions</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for societe in societes %}
+                                <tr>
+                                    <td>{{ societe.id }}</td>
+                                    <td>{{ societe.nom_societe}}</td>
+                                    <td>{{ societe.date_debut}}</td>
+                                    <td>{{ societe.date_fin}}</td>
+                                
+                                    <td>
+                                        <a href="#">Modifier</a>
+                                        
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div>
+            <a href="#">Imprimer la liste des materiels</a>
+       
+    
+</body>
+</html>
+{% endblock %}

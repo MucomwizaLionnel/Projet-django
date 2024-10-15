@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Perdiems</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        th, td {
+            text-align: left;
+        }
+        tfoot {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Total des Perdiems par Personne</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nom de la personne</th>
+            <th>Total Perdiem</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in perdiems_par_personne %}
+        <tr>
+            <td>{{ entry.personne_receveur }}</td>
+            <td>{{ entry.total_perdiem }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total pour toutes les personnes</td>
+            <td>{{ total_perdiems_personnes }}</td>
+        </tr>
+    </tfoot>
+</table>
+
+<h2>Total des Perdiems par Site</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nom du site</th>
+            <th>Total Perdiem</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in perdiems_par_site %}
+        <tr>
+            <td>{{ entry.site }}</td>
+            <td>{{ entry.total_perdiem }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total pour tous les sites</td>
+            <td>{{ total_perdiems_sites }}</td>
+        </tr>
+    </tfoot>
+</table>
+
+</body>
+</html>

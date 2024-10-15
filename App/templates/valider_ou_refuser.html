@@ -1,0 +1,64 @@
+<!-- valider_ou_refuser.html -->
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}"> <!-- Le fichier CSS que vous avez défini -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <h2>B@IT Health</h2>
+        <nav style="text-decoration: none;">
+            <a href="{% url 'tableaubord' %}"> Mon tableau de bord</a>
+        
+            <a href="#" class="active"><i class="icon"></i>Validation</a>
+
+            <a href="{% url 'listerapport' %}">Retour</a>
+            
+            <a href="{% url 'index' %}">Déconnexion</a>
+        </nav>
+        
+        
+        
+        <div class="sidebar-footer">
+            <a href="#" class="upgrade-btn">Parametre</a>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="table-container">
+        <div class="breadcrumb">
+            <a href="#">Pages</a> / <a href="#">Tables</a> / Tableau de projets
+        </div>
+    
+        <center><h2>Tableau de Projets</h2></center>
+    
+        <div style="display: flex; justify-content: space-between;border-radius: 10%;">
+            <!-- Projets en cours -->
+            <div style="width:50%;margin-left: 20%;">
+        <h1>Valider ou refuser le rapport: {{ rapport.titre_rapport }}</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" name="statut" value="Valide">Valider</button>
+            <button type="submit" name="statut" value="Refuse">Refuser</button>
+        </form>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>
+
+
+{% endblock %}
+

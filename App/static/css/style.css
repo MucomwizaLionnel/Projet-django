@@ -1,0 +1,238 @@
+
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .navbar-left {
+        padding: 5px;
+    }
+
+    .nav-link {
+        font-size: 16px;
+    }
+}
+
+
+/* Style for the container */
+
+.rapport-container {
+    background-color: #f3f7ff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin: 0 auto;
+}
+
+/* Title styling */
+.rapport-title h2 {
+    color: #1e3a8a; /* Dark blue color */
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.rapport-list th,td{
+    padding: 10px;
+    text-align: left;
+    border: solid 1px #ccc;
+}
+
+/* List styling */
+.rapport-list {
+    list-style-type: none;
+    padding-left: 0;
+    text-decoration: none;
+    
+    
+}
+.rapport-list li a{
+
+    text-decoration: none;
+    
+    
+}
+
+.rapport-list li {
+    color: #1f2937; /* Dark gray color */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+/* Illustration of two persons */
+.conversation-illustration {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.person {
+    width: 100px;
+    height: 100px;
+    background-color: #cfe3ff; /* Light blue background for persons */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* For alignment of left and right person */
+.person.left {
+    margin-right: 10px;
+}
+
+.person.right {
+    margin-left: 10px;
+}
+
+/* Adjust the font size and spacing for smaller screens */
+@media (max-width: 768px) {
+    .rapport-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .rapport-list li {
+        font-size: 16px;
+    }
+
+    .rapport-title h2 {
+        font-size: 20px;
+    }
+}
+
+
+
+
+/* Style global du formulaire */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Style pour les champs de saisie (input, select, textarea) */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+    font-size: 1em;
+}
+
+/* Style pour le bouton de soumission */
+form button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Changer la couleur du bouton au survol */
+form button:hover {
+    background-color: #218838;
+}
+
+/* Style des messages d'erreur */
+form .error {
+    color: red;
+    font-size: 0.9em;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #1a3d7c;
+    font-size: 24px;
+}
+
+
+
+
+
+.sidebar {
+    background-color: #1a3d7c;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    width: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar h1 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.nav-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-menu ul li {
+    margin-bottom: 20px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul li a img {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: 150px;
+        position: relative;
+    }
+
+    .rapport-container {
+        margin-left: 0;
+        padding: 10px;
+    }
+}

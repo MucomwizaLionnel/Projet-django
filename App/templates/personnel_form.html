@@ -1,0 +1,63 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Liste des rapports</title>
+</head>
+<body><div class="sidebar">
+    <div class="logo">
+        <h1>B@IT Health</h1>
+        <p></p>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+        
+            <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+            
+
+            <li><a href="{% url 'tableauborddeschef' %}">Tableau de bord</a></li>
+            
+       
+    </ul>
+    </nav>
+</div>
+    <!-- Your HTML structure goes here -->
+    <div class="rapport-container">
+        <div class="rapport-title">
+            <h2>{{ form.instance.pk|yesno:"Modifier le personne,Ajouter le personne" }}</h2>
+        </div>
+        <div class="rapport-list" style=" width: 850px;">
+           
+            
+           
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sauvegarder</button>
+            </form>  
+        </div>
+        <div class="conversation-illustration">
+            <div class="person left">
+                <!-- Left person illustration -->
+        
+            </div>
+            <div class="person right">
+                <!-- Right person illustration -->
+            </div>
+        </div>
+        </div>
+        
+        
+        
+        </body>
+        </html>
+        
+        {% endblock %}
+        
+        
+               

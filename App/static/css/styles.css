@@ -1,0 +1,259 @@
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #4b0082;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    background-color: #e9ecef;
+    /* padding: 5px; */
+    border-radius: 5px;
+}
+
+
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 20px;
+    position: fixed;
+}
+
+.sidebar .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.sidebar .logo p {
+    margin: 0;
+    font-size: 12px;
+    color: green;
+}
+.main-content header{
+    position: fixed;
+    background-color: #ccc;
+    width: 1000px;
+}
+.nav-menu{
+   /* flex-grow: 4; */
+   display: flex;
+   margin-top: 70px; /* Adjust for navbar height */
+
+   max-width: 12%;
+   width: 20%;
+   /* padding: 58px; */
+   margin: 20 28px;
+   border-radius: 10px;
+   background-color: transparent;
+   overflow: hidden;
+   box-shadow: 0 15px 20px rgba(0,0,0, 0.6);
+  
+   margin-top: 2;
+   position:fixed;
+  
+}
+.nav-menu a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+.nav-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #ccc;
+}
+
+.nav-menu ul li {
+    padding: 10px 20px;
+    
+    cursor: pointer;
+}
+
+.nav-menu ul li:hover {
+    background-color: #4a4e62;
+    
+   
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .navbar-left {
+        padding: 5px;
+    }
+
+    .nav-link {
+        font-size: 16px;
+    }
+}
+
+
+/* Style for the container */
+
+.rapport-container {
+    background-color: #f3f7ff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin: 0 auto;
+}
+
+/* Title styling */
+.rapport-title h2 {
+    color: #1e3a8a; /* Dark blue color */
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.rapport-list th,td{
+    padding: 10px;
+    text-align: left;
+    border: solid 1px #ccc;
+}
+
+/* List styling */
+.rapport-list {
+    list-style-type: none;
+    padding-left: 0;
+    text-decoration: none;
+    
+    
+}
+.rapport-list li a{
+
+    text-decoration: none;
+    
+    
+}
+
+.rapport-list li {
+    color: #1f2937; /* Dark gray color */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+/* Illustration of two persons */
+.conversation-illustration {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.person {
+    width: 100px;
+    height: 100px;
+    background-color: #cfe3ff; /* Light blue background for persons */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* For alignment of left and right person */
+.person.left {
+    margin-right: 10px;
+}
+
+.person.right {
+    margin-left: 10px;
+}
+
+/* Adjust the font size and spacing for smaller screens */
+@media (max-width: 768px) {
+    .rapport-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .rapport-list li {
+        font-size: 16px;
+    }
+
+    .rapport-title h2 {
+        font-size: 20px;
+    }
+}
+
+
+
+
+/* Style global du formulaire */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Style pour les champs de saisie (input, select, textarea) */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form input[type="number"],
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+    font-size: 1em;
+}
+
+/* Style pour le bouton de soumission */
+form button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Changer la couleur du bouton au survol */
+form button:hover {
+    background-color: #218838;
+}
+
+/* Style des messages d'erreur */
+form .error {
+    color: red;
+    font-size: 0.9em;
+}

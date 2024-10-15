@@ -1,0 +1,95 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Similaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <ul>
+            <li class="active">
+                <!-- <i class="fas fa-network-wired"></i> Carte du réseau -->
+            </li>
+            <li>
+                <i>Mon tableau de bord</i>
+            </li>
+            <li>
+                <i class="fas fa-wifi"></i> WiFi
+            </li>
+            <li>
+                <i class="fas fa-users"></i> Réseau d'invités
+            </li>
+            <li>
+                <i class="fas fa-child"></i> Contrôle parental
+            </li>
+            <li>
+                <i class="fas fa-cloud"></i> TP-Link Cloud
+            </li>
+        </ul>
+    </div>
+
+    <!-- En-tête -->
+    <div class="header">
+        <button<a href="#">B@IT Health</a></button>
+      
+        <button><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></button>
+        
+        <button><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></button>
+        
+
+        
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <h2>Liste des materiels</h2>
+        <table style=" width: 850px;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom de materiel</th>
+                    <th>Nom du site</th>
+                    <th>Type de materiel</th>
+                    <th>Quantites</th>
+                    <th>Qualite</th>
+                    <th>Date d'enregistrement</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mat in materiels %}
+                    <tr>
+                        <td>{{ mat.id }}</td>
+                        <td>{{ mat.nom_materiel }}</td>
+                        <td>{{ mat.projet.nom_projet }}</td>
+                        <td>{{ mat.type_materiel }}</td>
+                        <td>{{ mat.quantite_materiel }}</td>
+                        <td>{{ mat.qualite }}</td>
+                        <td>{{ mat.date_d_enregistrement }}</td>
+                        <td>
+                            <a href="{% url 'editerMateriel' mat.pk %}">Modifier</a>
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <!-- <div class="pagination">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div> -->
+    </div>
+
+</body>
+</html>
+
+{% endblock %}

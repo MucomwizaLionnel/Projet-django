@@ -1,0 +1,53 @@
+<div class="table-container">
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb">
+        <a href="#">Pages</a> / <a href="#">Tables</a> / Tableau de projets
+    </div>
+
+    <h2>Tableau de Projets</h2>
+
+    <div style="display: flex; justify-content: space-between;">
+
+        <!-- Projets en cours -->
+        <div style="width: 48%;">
+            <h3>Projets en cours avec sites d'implémentation, personnel et perdiems</h3>
+            {% for detail in projets_details_en_cours %}
+                <h4>Projet: {{ detail.projet.nom_projet }}</h4>
+                <p>Responsable: {{ detail.projet.responsable_projet }}</p>
+                <p>Financé par: {{ detail.projet.finance_par }}</p>
+                <p>Description: {{ detail.projet.description_projet }}</p>
+                <p>Nombre total de personnels: {{ detail.total_personnels }}</p>
+                <h5>Total des perdiems utilisés : {{ detail.total_perdiems }} FCFA</h5>
+
+                <h5>Sites d'implémentation :</h5>
+                <ul>
+                    {% for site in detail.sites %}
+                        <li>{{ site.nom_site }} - {{ site.lieu }} (Chef d'équipe: {{ site.chef_d_equipe }})</li>
+                    {% endfor %}
+                </ul>
+                <hr>
+            {% endfor %}
+        </div>
+
+        <!-- Projets terminés -->
+        <div style="width: 48%;">
+            <h3>Projets terminés avec perdiems utilisés</h3>
+            {% for detail in projets_details_termines %}
+                <h4>Projet: {{ detail.projet.nom_projet }}</h4>
+                <p>Responsable: {{ detail.projet.responsable_projet }}</p>
+                <p>Financé par: {{ detail.projet.finance_par }}</p>
+                <p>Description: {{ detail.projet.description_projet }}</p>
+                <h5>Total des perdiems utilisés : {{ detail.total_perdiems }} FCFA</h5>
+
+                <h5>Sites d'implémentation :</h5>
+                <ul>
+                    {% for site in detail.sites %}
+                        <li>{{ site.nom_site }} - {{ site.lieu }} (Chef d'équipe: {{ site.chef_d_equipe }})</li>
+                    {% endfor %}
+                </ul>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>

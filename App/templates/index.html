@@ -1,0 +1,90 @@
+
+    {% block content %}
+    {% load static %}
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+        <link rel="stylesheet" href="{% static 'css/styl.css' %}"> <!-- Le fichier CSS que vous avez défini -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    
+        <!-- Barre latérale -->
+        <div class="sidebar">
+            <h2>B@IT Health</h2>
+            <nav style="text-decoration: none;">
+                 <a href="{% url 'tableaubord' %}"> Tableau de bord</a>  
+                 
+                 <a href="#" class="active"><i class="icon"></i>Informations</a>
+                
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="upgrade-btn">Upgrade to PRO</a>
+            </div>
+        </div>
+    
+        <!-- Contenu principal -->
+        <div class="table-container">
+            <!-- Fil d'Ariane -->
+            <div class="breadcrumb">
+                <a href="#">Pages</a> / <a href="#">Tables</a> / Tables
+            </div>
+    
+            <h2>Authors table</h2>
+        <h1>Tableau de bord</h1>
+    
+        <section>
+            <h2>Utilisateurs connectés aujourd'hui</h2>
+            <p>Nombre d'utilisateurs : {{ utilisateurs_connectes }}</p>
+            <ul>
+                {% for nom in nom_utilisateurs_connectes %}
+                    <li>{{ nom }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    
+        <section>
+            <h2>Projets terminés</h2>
+            <p>Nombre de projets terminés : {{ projets_termines }}</p>
+            <ul>
+                {% for nom_projet, finance_par in noms_projets_termines %}
+                    <li>{{ nom_projet }} - Financé par : {{ finance_par }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    
+        <section>
+            <h2>Projets en cours</h2>
+            <p>Nombre de projets en cours : {{ projets_en_cours }}</p>
+            <ul>
+                {% for nom_projet, finance_par in noms_projets_en_cours %}
+                    <li>{{ nom_projet }} - Financé par : {{ finance_par }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    
+        <section>
+            <h2>Actions récentes</h2>
+            <ul>
+                {% for action in descriptions_actions %}
+                    <li>{{ action }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+    
+    
+</div>
+    
+</body>
+</html>
+
+
+{% endblock %}
+
+

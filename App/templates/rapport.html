@@ -1,0 +1,111 @@
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}"> <!-- Le fichier CSS que vous avez défini -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <h2>Soft UI Dashboard</h2>
+        <nav style="text-decoration: none;">
+             <a href="#" class="activ"><i class="icon"></i> Dashboard</a>
+                {% if is_responsable %}
+                <a href="{% url 'rapport' %}"> Formulaire pour complete les rapport</a>
+                {% endif %}
+    
+               <a href="{% url 'listeperdieme' %}">Voir les perdieme pour valider</a>
+    
+                <a href="{% url 'listeperdi' %}">Listes des perdiemes valide ou non valide </a>
+                <a href="{% url 'listedesprojet' %}">Listes de tous les projet avec des personnels </a>
+                
+                
+                <a href="{% url 'listedesprojet' %}">Lites des sites d'implementation avec les techniciens </a>
+                {% if is_chef_or_admin %}
+                <a href="{% url 'AjouterPersonnel' %}">Ajouter les personnel</a>
+                <a href="{% url 'creer' %}">Ajouter un site d'implementation</a>
+                <a href="{% url 'ajoutmateriel' %}">Ajouter un materiel</a>
+                <a href="{% url 'ajouterperdieme' %}"> Ajouter les perdiemes</a>
+                {% endif %}
+                <a href="{% url 'liste_materiel' %}">Listes des materiels</a>
+                <a href="#" class="active"><i class="icon"></i> Liste des personnels</a>
+                
+               
+                <a href="{% url 'listerapport' %}"> Liste des rapport</a>
+                {% if is_chef_or_responsable %}
+                <a href="{% url 'register' %}"> <i>Creation des comptes des utilisateur </i></a>
+                {% endif %}
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="upgrade-btn">Upgrade to PRO</a>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="table-container">
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb">
+            <a href="#">Pages</a> / <a href="#">Tables</a> / Tables
+        </div>
+
+        <h2>Authors table</h2>
+
+            
+            <form method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                {{ form.media }} 
+                {{ form.as_p }}
+
+                <button type="submit">Enregistrer</button>
+            </form>
+            
+            <h2>Projects table</h2>
+
+            <!-- Table des projets -->
+            <div class="card">
+                <div class="project-status">
+                    <span>Spotify</span>
+                    <span>$2,500</span>
+                    <span>working</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="working"></span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="project-status">
+                    <span>Invision</span>
+                    <span>$5,000</span>
+                    <span>done</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="done"></span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="project-status">
+                    <span>Jira</span>
+                    <span>$3,400</span>
+                    <span>canceled</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="canceled"></span>
+                </div>
+            </div>
+        </div>
+    
+    </body>
+    </html>
+    
+    
+    {% endblock %}
+    
+    
+      

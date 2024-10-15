@@ -1,0 +1,47 @@
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systeme</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="side-box">
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+            
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                
+
+                <li><a href="{% url 'tableaubordTechn' %}"> Tableau de bord</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+            
+            </div>
+           
+        </header>
+        <div class="content">
+        <div class="table-responsive">
+            <h1>Liste des projets</h1><br><br>
+            
+            {% for projet in projets %}
+            
+            <a href="{% url 'projet_detail' projet.id %}">{{ projet.nom_projet}}</a><br>
+            
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

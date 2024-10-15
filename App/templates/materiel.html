@@ -1,0 +1,142 @@
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}"> <!-- Le fichier CSS que vous avez défini -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <h2>B@IT Health</h2>
+        <nav style="text-decoration: none;">
+            <a href="{% url 'tableaubord' %}"> Mon tableau de bord</a>
+        
+            <!-- Lien visible uniquement pour les responsables -->
+            {% if is_responsable %}
+                <a href="{% url 'rapport' %}">Formulaire pour compléter les rapports</a>
+            {% endif %}
+        
+            <!-- Lien visible uniquement pour les responsables ou chefs -->
+            {% if is_responsable or is_chef %}
+                <a href="{% url 'listeperdieme' %}">Voir les perdiemes pour valider</a>
+                <a href="{% url 'listedesprojet' %}">Listes des projets avec personnel</a>
+            {% endif %}
+        
+            <!-- Lien visible uniquement pour les chefs ou administrateurs -->
+           
+            <a href="#" class="active"><i class="icon"></i>Listes des matériels</a>
+            <a href="{% url 'liste_personnel' %}">Listes des personnels</a>
+        
+            <!-- Lien visible uniquement pour les chefs ou responsables -->
+            {% if is_chef or is_responsable %}
+                <a href="{% url 'register' %}"><i>Création des comptes utilisateur</i></a>
+            {% endif %}
+            
+            <a href="{% url 'index' %}">Déconnexion</a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="#" class="upgrade-btn">Upgrade to PRO</a>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="table-container">
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb">
+            <a href="#">Pages</a> / <a href="#">Tables</a> / Tables
+        </div>
+
+        <h2>Authors table</h2>
+
+        <!-- Table des auteurs -->
+        <table class="table">
+            {% if is_chef_or_admin %}
+    <a href="{% url 'ajoutmateriel' %}" class="btn">Ajouter un matériel</a>
+            {% endif %}
+
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom de materiel</th>
+                        <th>Nom de Projet</th>
+                        <th>Type de materiel</th>
+                        <th>Quantites</th>
+                        <th>Qualite</th>
+                        <th>Date d'enregistrement</th>
+                        {% if is_chef_or_admin %}
+                        <th>Actions</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mat in materiels %}
+                        <tr>
+                            <td>{{ mat.id }}</td>
+                            <td>{{ mat.nom_materiel }}</td>
+                            <td>{{ mat.projet.nom_projet }}</td>
+                            <td>{{ mat.type_materiel }}</td>
+                            <td>{{ mat.quantite_materiel }}</td>
+                            <td>{{ mat.qualite }}</td>
+                            <td>{{ mat.date_d_enregistrement }}</td>
+                            {% if is_chef_or_admin %}
+                            <td>
+                                
+                                <a href="{% url 'editerMateriel' mat.pk %}">Modifier</a>
+                                
+                            </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h2>Projects table</h2>
+    
+            <!-- Table des projets -->
+            <div class="card">
+                <div class="project-status">
+                    <span>Spotify</span>
+                    <span>$2,500</span>
+                    <span>working</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="working"></span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="project-status">
+                    <span>Invision</span>
+                    <span>$5,000</span>
+                    <span>done</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="done"></span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="project-status">
+                    <span>Jira</span>
+                    <span>$3,400</span>
+                    <span>canceled</span>
+                </div>
+                <div class="progress-bar">
+                    <span class="canceled"></span>
+                </div>
+            </div>
+        </div>
+    
+    </body>
+    </html>
+    
+    
+    {% endblock %}
+    
+

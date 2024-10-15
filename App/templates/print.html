@@ -1,0 +1,64 @@
+<!-- print_materiel.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des materiels à imprimer</title>
+    <style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+   
+    <h2>Liste des materiels</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom de materiel</th>
+                <th>Nom de Projet</th>
+                <th>Type de materiel</th>
+                <th>Quantites</th>
+                <th>Qualite</th>
+                <th>Date d'enregistrement</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mat in materiels %}
+            <tr>
+                <td>{{ mat.id }}</td>
+                <td>{{ mat.nom_materiel }}</td>
+                <td>{{ mat.projet }}</td>
+                <td>{{ mat.type_materiel }}</td>
+                <td>{{ mat.quantite_materiel }}</td>
+                <td>{{ mat.qualite }}</td>
+                <td>{{ mat.date_d_enregistrement }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="no-print">
+        <button onclick="window.print()">Imprimer cette page</button>
+    </div>
+</body>
+</html>

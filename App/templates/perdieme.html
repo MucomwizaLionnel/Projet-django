@@ -1,0 +1,151 @@
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}"> <!-- Le fichier CSS que vous avez défini -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <h2>B@IT Health</h2>
+        <nav style="text-decoration: none;">
+                <a href="{% url 'tableaubord' %}"> Mon tableau de bord</a>
+                {% if is_responsable %}
+                <a href="{% url 'rapport' %}"> Formulaire pour complete les rapport</a>
+                {% endif %}
+    
+                <a href="#" class="active"><i class="icon"></i> Voir les perdieme pour valider</a>
+    
+                <a href="{% url 'listeperdi' %}">Listes des perdiemes valide ou non valide </a>
+                <a href="{% url 'listedesprojet' %}">Listes de tous les projet avec des personnels </a>
+                
+                
+                
+                <a href="{% url 'liste_personnel' %}"> Liste des personnels</a>
+                
+               
+                <a href="{% url 'listerapport' %}"> Liste des rapport</a>
+                {% if is_chef_or_responsable %}
+                <a href="{% url 'register' %}"> <i>Creation des comptes des utilisateur </i></a>
+                {% endif %}
+                <a href="{% url 'index' %}">Déconnexion</a>
+        </nav>
+       
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="table-container">
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb">
+            <a href="#">Pages</a> / <a href="#">Tables</a> / Tables
+        </div>
+
+        <h2>Authors table</h2>
+
+        <!-- Table des auteurs -->
+        <table class="table">
+            {% if is_chef_or_admin %}
+            <a href="{% url 'ajouterperdieme' %}"class="btn">Ajouter perdiem</a>
+            {% endif %}
+           
+            
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom et Prenom de personne</th>
+                        <th>Type perdieme</th>
+                        <th>site d'implementation</th>
+                        <th>Montant</th>
+                        <th>Date de transaction</th>
+                        <th>QCode de transaction</th>
+                        {% if is_chef_or_admin %}
+                        <th>Validation</th>
+                        {% endif %}
+                        {% if is_responsable_or_technicien %}
+                        <th>Actions</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    {% for perdieme in perdiemes %} 
+                    <tr>
+                        <td>{{ perdieme.id}}</td>
+                     
+                        <td>{{ perdieme.personne_receveur.nom_prenom }}</td>
+                        <td>{{ perdieme.description}}</td>
+                        <td>{{perdieme.site.nom_site}}</td>
+                        <td>{{ perdieme.montant}}</td>
+                        
+                        <td>{{perdieme.date_transaction}}</td>
+                        <td>{{perdieme.code_transaction_numero_bordereau}}</td>
+                        
+                    
+                    <td>
+                    {% if is_technicien_or_responsable %}    
+                    <a href="{% url 'valide' id=perdieme.id %}"><img style="width: 100px;height: 30px; border-radius :50px;" src="{% static 'media/valider.jpeg' %}" alt=""></a></td>    
+                    {% endif %}
+                    {% if is_chef_or_admin %}
+                    <a href="{% url 'editer' perdieme.pk %}"><img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/modif.png' %}" alt=""></a>
+                    {% endif %}
+                    <td>
+                    </tr>
+         
+        
+                    {% endfor %}
+                </tbody>
+       
+
+
+        </table>
+
+        <h2>Projects table</h2>
+
+        <!-- Table des projets -->
+        <div class="card">
+            <div class="project-status">
+                <span>Spotify</span>
+                <span>$2,500</span>
+                <span>working</span>
+            </div>
+            <div class="progress-bar">
+                <span class="working"></span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="project-status">
+                <span>Invision</span>
+                <span>$5,000</span>
+                <span>done</span>
+            </div>
+            <div class="progress-bar">
+                <span class="done"></span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="project-status">
+                <span>Jira</span>
+                <span>$3,400</span>
+                <span>canceled</span>
+            </div>
+            <div class="progress-bar">
+                <span class="canceled"></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+{% endblock %}
+
+
+  

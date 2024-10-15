@@ -1,0 +1,94 @@
+
+
+
+
+
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systeme</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+          
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+
+               <li><a href="{% url 'tableaubordTechn' %}"> Tableau de Bord</a></li>
+               <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                
+               
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-bar">
+              
+            </div>
+           
+        </header>
+        <div class="content">
+           
+        <div class="table-responsive">
+          
+            
+                <h1>{{ projet.nom_projet }}</h1>
+                <p><strong>Chef de Projet :</strong> {{ projet.chef_projet.nom_prenom }}</p>
+                <p><strong>Lieu :</strong> {{ projet.lieu }}</p>
+                <p><strong>Date de Début :</strong> {{ projet.date_debut }}</p>
+                <p><strong>Date de Fin :</strong> {{ projet.date_fin }}</p>
+                <p><strong>Description :</strong> {{ projet.description_projet }}</p>
+            
+                <h2>Responsable de l'equipe</h2>
+                <ul>
+                    {% for personnel in personnels %}
+                        <li>{{ personnel.nom_prenom }}</li>
+                    {% endfor %}
+                </ul>
+            
+                <h2>Rapports</h2>
+                <ul>
+                    {% for rapport in rapports %}
+                        <li>{{ rapport.titre_rapport }} - <a href="{{ rapport.description_file.url }}">Voir le fichier</a></li>
+                    {% endfor %}
+                </ul>
+            
+                <h2>Matériels Utilisés</h2>
+                <ul>
+                    {% for materiel in materiels %}
+                        <li>{{ materiel.nom_materiel }} ({{ materiel.type_materiel }}) - Quantité : {{ materiel.quantite_materiel }}</li>
+                    {% endfor %}
+                </ul>
+            
+                <h2>Perdiems</h2>
+                <ul>
+                    {% for perdiem in perdiems %}
+                        <li>{{ perdiem.personnel.nom_prenom }} - <li>{{ perdiem.projet.nom_projet }} - {{ perdiem.montant }} - {{ perdiem.date }}</li>
+                    {% endfor %}
+                </ul>
+         
+        </div>
+            <div class="no-print">
+                <button onclick="window.print()">Imprimer cette page</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,73 @@
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styl.css' %}"> <!-- Le fichier CSS que vous avez défini -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <h2>B@IT Health</h2>
+        <nav style="text-decoration: none;">
+                <a href="{% url 'tableaubord' %}"> Mon tableau de bord</a>
+                
+               
+                <a href="{% url 'listedesprojet' %}">Projet</a>
+                <a href="#" class="active"><i class="icon"></i>Ajouter un projet</a>
+                
+                <a href="{% url 'listedesprojet' %}">Sites d'implementation avec les techniciens </a>
+            
+                <a href="{% url 'liste_personnel' %}">Techniciens</a>
+                
+               
+                
+                {% if is_chef_or_responsable %}
+                <a href="{% url 'register' %}"> <i>Creation des comptes des utilisateur </i></a>
+                {% endif %}
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="upgrade-btn">Parametre</a>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="table-container">
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb">
+            <a href="#">Pages</a> / <a href="#">Tables</a> / Tables
+        </div>
+
+        <h2>Authors table</h2>
+    <form method="post" style="width: 500px; margin-left: 20%;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sauvegarder</button>
+        <hr>
+    </form>
+
+  
+    </div>
+
+    
+    
+    
+
+   
+
+</div>
+
+
+
+</body>
+</html>
+
+
+{% endblock %}
+

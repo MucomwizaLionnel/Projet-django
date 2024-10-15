@@ -1,0 +1,107 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>claimauditor</h1>
+            <p>Manage Payment Integrity</p>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'index' %}">  <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/home.png' %}" alt=""></a></li>
+            
+                <li><a href="{% url 'index' %}"> <img style="width: 30px;height: 30px; border-radius :50px;" src="{% static 'media/deconnexion.png' %}" alt=""></a></li> <br><br>
+                
+
+                <li><a href="{% url 'tableauborddeschef' %}">Tableau de bord</a></li>
+                
+           
+        </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+       
+
+
+        <div class="content">
+            <br><br><br><br>
+        <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th> ID</th>
+                               <th> Personnel</th>
+                               <th> Projet</th>
+                                <th>Titre</th>
+                                <th>description</th>
+                                <th>Date</th>
+                                <th>Statut de validation</th>
+                                <th>Action</th>
+                             
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rapport in rapports %}
+                                
+                            <tr>
+                                <td data-label="ID"> {{ rapport.id}} </td> 
+                                <td data-label="Nom et Prenom"> {{ rapport.personnel.nom_prenom}} </td>
+                                <td data-label="Projet"> {{ rapport.projet.nom_projet}} </td>
+                                <td data-label="Titre"> {{ rapport.titre_rapport}} </td>   
+                                
+                                <td data-label="Description"> {{ rapport.description|safe}} </td>   
+                                <td data-label="Date"> {{ rapport.date}} </td>  
+                                <td>
+                                    <p><strong>Statut:</strong> 
+                                        {% if rapport.statut == 'Valide' %}
+                                            Validé
+                                        {% elif rapport.statut == 'Refuse' %}
+                                            Refusé
+                                        {% elif rapport.statut == 'En attente' %}
+                                            En attente de validation
+                                        {% else %}
+                                            Brouillon
+                                        {% endif %}
+                                    </p>
+                                </td>
+                                
+                                <td>
+                                    {% if user.is_authenticated %}
+                                        {% if rapport.personnel.user == user %}
+                                            {% if rapport.statut != 'Valide' %}
+                                            <a href="{% url 'editerRapport' rapport.pk %}">Modifier ce rapport</a>
+                                            {% endif %}
+                                        {% endif %}    
+                                            {% if is_chef_or_admin %}
+                                                <a href="{% url 'valider_ou_refuser_rapport' rapport.pk %}">Valider ou Refuser</a>
+                                            {% endif %}
+
+                                    {% endif %}
+                                </td>
+                                   
+                                
+
+                            </tr> 
+                                    
+                            {% endfor %}
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+           
+       
+    
+</body>
+</html>
+{% endblock %}

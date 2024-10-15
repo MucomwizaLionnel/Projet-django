@@ -1,0 +1,38 @@
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Se connecter</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ Connexion_form.nom_utilisateur.label_tag }}
+                    {{ Connexion_form.nom_utilisateur }}
+                </div>
+                <div class="form-group">
+                    {{ Connexion_form.mots_de_pass.label_tag }}
+                    {{ Connexion_form.mots_de_pass }}
+                </div>
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+                    
+{% endblock %}
+
+
+                    
